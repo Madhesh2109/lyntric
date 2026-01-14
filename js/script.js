@@ -33,3 +33,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+document.querySelectorAll('a[href="custom-app-development.html"]').forEach(link => {
+  link.addEventListener('click', () => {
+    console.log("Custom Apps page clicked");
+  });
+});

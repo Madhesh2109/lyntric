@@ -425,6 +425,30 @@ p {
   margin-bottom: 10px;
 }
 
+.context-link {
+  margin-top: 30px;
+  padding: 18px 22px;
+  max-width: 640px;
+  border-left: 3px solid #22c55e;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+}
+
+.context-link p {
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+.context-link a {
+  color: #22c55e;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.context-link a:hover {
+  text-decoration: underline;
+}
+
 /* =====================
    RESPONSIVE
 ===================== */
