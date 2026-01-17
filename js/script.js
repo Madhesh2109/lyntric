@@ -39,3 +39,17 @@ document.querySelectorAll('a[href="custom-app-development.html"]').forEach(link 
     console.log("Custom Apps page clicked");
   });
 });
+
+// For Hamburger
+const hamburger = document.querySelector(".hamburger");
+const mobileNav = document.getElementById("mobileNav");
+
+hamburger.addEventListener("click", () => {
+  mobileNav.classList.toggle("active");
+});
+// Auto-close when clicking a link
+document.querySelectorAll("#mobileNav a").forEach(link => {
+  link.addEventListener("click", () => {
+    mobileNav.classList.remove("active");
+  });
+});

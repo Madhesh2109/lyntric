@@ -1,31 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>Custom Web & Mobile App Development | Lyntric</title>
+    <title>Custom Web & Mobile App Development | Lyntric</title>
 
-  <meta name="description"
-    content="Custom web and mobile app development for businesses. We build scalable, reliable applications tailored to real business needs.">
+    <meta name="description"
+      content="Custom web and mobile app development for businesses. We build scalable, reliable applications tailored to real business needs.">
 
-  <link rel="stylesheet" href="css/style.css" />
-</head>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 <body>
+  <!-- ================= HEADER ================= -->
+  <header class="system-header">
+    <!-- System Status Strip -->
+    <div class="system-strip">
+        <span class="system-dot"></span>
+        <span class="system-text">Systems operational • Accepting new projects</span>
+    </div>
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="container nav">
-      <div class="logo">Lyntric</div>
+    <!-- Main Navigation -->
+    <div class="header-core">
+        <div class="container header-inner">
+          <div class="brand">
+              <img
+              src="assets/images/logo.png"
+              alt="Lyntric logo"
+              class="header-logo"
+              />
+              <span class="brand-name">Lyntric</span>
+          </div>
 
-      <nav>
-        <a href="index.html">Supply Chain</a>
-        <a href="#hero">Home</a>
-        <a href="#what-we-build">What We Build</a>
-        <a href="#who-is-this-for">Industries</a>
-        <a href="#about-us">About</a>
-        <a href="index.html#contact" class="btn">Contact</a>
-      </nav>
+          <nav class="header-nav">
+            <a href="index.html">Supply Chain</a>
+            <a href="#hero">Home</a>
+            <a href="#what-we-build">What We Build</a>
+            <a href="#who-is-this-for">Industries</a>
+            <a href="#about-us">About</a>
+            <a href="index.html#contact" class="btn">Contact</a>
+          </nav>
+        </div>
     </div>
   </header>
 
@@ -167,30 +182,72 @@
       </div>
     </div>
   </section>
+  
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="footer-container">
 
-  <!-- CONTACT -->
-  <section id="contact" class="contact">
-    <div class="container">
-      <h2>Let’s Build Your Application</h2>
-      <p>Tell us about your idea or business requirement.</p>
+        <!-- Left: Brand + Quote -->
+        <div class="footer-brand">
+            <div class="brand-logo">
+                <img
+                    src="assets/images/logo.png"
+                    alt="Lyntric logo"
+                    class="footer-logo"
+                />
+                <span class="brand-name">Lyntric</span>
+            </div>
 
-      <form>
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Your Email" required />
-        <textarea placeholder="Briefly describe your project" required></textarea>
-        <button class="btn btn-primary" type="submit">
-          Get in Touch
-        </button>
-      </form>
+        <p class="footer-quote">
+            “We build systems that bring clarity to complex operations
+            and reliability to growing businesses.”
+        </p>
+        </div>
+
+        <!-- Company -->
+        <div class="footer-column">
+        <h4>Company</h4>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#solutions">Solutions</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#contact">Custom Apps</a></li>
+        </ul>
+        </div>
+
+        <!-- Documentation -->
+        <div class="footer-column">
+        <h4>Documentation</h4>
+        <ul>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#privacy">Privacy Policy</a></li>
+        </ul>
+        </div>
+
+        <!-- Social -->
+        <div class="footer-column">
+        <h4>Social</h4>
+        <ul>
+            <li><a href="#">WhatsApp</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">YouTube</a></li>
+        </ul>
+        </div>
+
     </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <p>© 2026 Lyntric. All rights reserved.</p>
+    <!-- Divider -->
+    <div class="footer-divider"></div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+        <span>© Lyntric. All rights reserved.</span>
+        <a href="#terms">Terms & Conditions</a>
     </div>
   </footer>
 
+  <script src="./js/script.js"></script>
 </body>
 </html>
