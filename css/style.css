@@ -87,64 +87,171 @@ p {
 /* =====================
    HEADER & NAV
 ===================== */
-.header {
+.system-header {
   position: sticky;
   top: 0;
-  z-index: 100;
-  background: rgba(7, 28, 22, 0.75);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border-subtle);
+  z-index: 200;
 }
 
-.nav {
+/* System Strip */
+.system-strip {
+  height: 32px;
+  background: linear-gradient(
+    90deg,
+    rgba(34, 197, 94, 0.15),
+    rgba(34, 197, 94, 0.05)
+  );
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #9fd3c4;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.system-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.6);
+}
+
+/* Core Header */
+.header-core {
+  background: rgba(7, 28, 22, 0.85);
+  backdrop-filter: blur(10px);
+}
+
+.header-inner {
   height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.logo {
-  font-size: 20px;
-  font-weight: 700;
-  color: #d1fae5;
+/* Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.nav a {
-  margin-left: 24px;
+.header-logo {
+  height: 30px;
+  width: auto;
+}
+
+.brand-name {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Nav */
+.header-nav a {
+  margin-left: 26px;
   text-decoration: none;
-  color: var(--text-main);
   font-size: 14px;
+  color: var(--text-main);
   opacity: 0.85;
 }
 
-.nav a:hover {
+.header-nav a:hover {
   opacity: 1;
 }
 
-/* =====================
-   HERO (ASTRO-LIKE)
-===================== */
-.hero {
-  padding: 140px 0 120px;
-  text-align: center;
+/* CTA */
+.nav-cta {
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #022c22 !important;
+  font-weight: 500;
 }
 
+/* =====================
+   HERO SECTION
+===================== */
+
+.hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Background image */
+.hero-bg {
+  background-image: url("../assets/images/supply-chain.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Overlay for readability */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(7, 28, 22, 0.78),
+    rgba(7, 28, 22, 0.92)
+  );
+  z-index: 1;
+}
+
+/* Content wrapper */
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Headline */
 .hero h1 {
   font-size: 46px;
   max-width: 780px;
   margin: auto;
 }
 
+/* Description */
 .hero p {
   margin: 26px auto;
   max-width: 640px;
   font-size: 17px;
+  color: #cfeee4;
 }
 
+/* CTA spacing */
+.hero .btn {
+  margin-top: 10px;
+}
+
+/* Trust line */
 .hero .trust-line {
   margin-top: 18px;
   font-size: 13px;
   color: #9fd3c4;
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 80vh;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
 }
 
 
@@ -480,6 +587,10 @@ p {
   color: #e5e7eb;
   padding: 80px 0 30px;
   margin-top: 120px;
+
+  border-top-left-radius: 28px;
+  border-top-right-radius: 28px;
+  overflow: hidden;
 }
 
 .footer-container {

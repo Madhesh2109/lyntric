@@ -11,11 +11,28 @@
 </head>
 <body>
     <!-- ================= HEADER ================= -->
-    <header class="header">
-        <div class="container nav">
-        <div class="logo">Lyntric</div>
+    <header class="system-header">
 
-        <nav>
+    <!-- System Status Strip -->
+    <div class="system-strip">
+        <span class="system-dot"></span>
+        <span class="system-text">Systems operational • Accepting new projects</span>
+    </div>
+
+    <!-- Main Navigation -->
+    <div class="header-core">
+        <div class="container header-inner">
+
+        <div class="brand">
+            <img
+            src="assets/images/logo.png"
+            alt="Lyntric logo"
+            class="header-logo"
+            />
+            <span class="brand-name">Lyntric</span>
+        </div>
+
+        <nav class="header-nav">
             <a href="#hero">Home</a>
             <a href="#solutions">Solutions</a>
             <a href="#industries">Industries</a>
@@ -25,12 +42,18 @@
             <a href="custom-app-development.html">Custom Apps</a>
             <a href="#contact" class="btn">Contact</a>
         </nav>
+
         </div>
+    </div>
+
     </header>
 
     <!-- ================= HERO ================= -->
-    <section id="hero" class="hero">
-    <div class="container">
+    <section id="hero" class="hero hero-bg">
+    <!-- overlay layer -->
+    <div class="hero-overlay"></div>
+
+    <div class="container hero-content">
         <h1>Supply Chain Automation & Custom Software Development</h1>
 
         <p>
