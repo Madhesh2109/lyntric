@@ -42,14 +42,24 @@ document.querySelectorAll('a[href="custom-app-development.html"]').forEach(link 
 
 // For Hamburger
 const hamburger = document.querySelector(".hamburger");
-const mobileNav = document.getElementById("mobileNav");
+const mobileMenu = document.getElementById("mobileMenu");
+const mobileBackdrop = document.getElementById("mobileBackdrop");
 
-hamburger.addEventListener("click", () => {
-  mobileNav.classList.toggle("active");
-});
-// Auto-close when clicking a link
-document.querySelectorAll("#mobileNav a").forEach(link => {
-  link.addEventListener("click", () => {
-    mobileNav.classList.remove("active");
-  });
+function openMenu() {
+  mobileMenu.classList.add("active");
+  mobileBackdrop.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function closeMenu() {
+  mobileMenu.classList.remove("active");
+  mobileBackdrop.classList.remove("active");
+  document.body.style.overflow = "";
+}
+
+hamburger.addEventListener("click", openMenu);
+mobileBackdrop.addEventListener("click", closeMenu);
+
+mobileMenu.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", closeMenu);
 });
