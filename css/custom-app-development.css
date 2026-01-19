@@ -13,6 +13,30 @@
   background-repeat: no-repeat;
 }
 
+.custom-app-page #who-is-this-for {
+  background-image: linear-gradient(
+      rgba(7, 28, 22, 0.85),
+      rgba(7, 28, 22, 0.95)
+    ),
+    url("../assets/images/who-is-this-for.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.custom-app-page .services-showcase {
+  background-image: linear-gradient(
+      rgba(7, 28, 22, 0.85),
+      rgba(7, 28, 22, 0.95)
+    ),
+    url("../assets/images/pos-services.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+/* ---------------------------------------------------------------------------------------------- */
 
 /* =====================
    POSITIONING NOTE – FLOATING SURFACE
@@ -72,5 +96,320 @@
 
 @keyframes blink {
   50% { opacity: 0; }
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+
+/* =====================
+   SERVICES – SHOWCASE
+===================== */
+.custom-app-page .services-showcase {
+  padding: 120px 0;
+}
+
+.custom-app-page .services-showcase h2 {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+/* Vertical stack */
+.custom-app-page .services-stack {
+  max-width: 820px;
+  margin: auto;
+  position: relative;
+}
+
+/* Spine line */
+.custom-app-page .services-stack::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    rgba(34, 197, 94, 0.6),
+    rgba(34, 197, 94, 0.05)
+  );
+}
+
+/* Individual service */
+.custom-app-page .service-item {
+  display: flex;
+  gap: 36px;
+  padding: 40px 0;
+  position: relative;
+}
+
+/* =====================
+   SERVICES – SCROLL REVEAL
+===================== */
+.custom-app-page .service-item {
+  opacity: 0;
+  transform: translateY(22px) scale(0.985);
+
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+}
+
+.custom-app-page .service-item.reveal {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.custom-app-page .service-item:nth-child(2) {
+  transition-delay: 0.08s;
+}
+.custom-app-page .service-item:nth-child(3) {
+  transition-delay: 0.16s;
+}
+.custom-app-page .service-item:not(.reveal) {
+  transition-duration: 0.45s;
+}
+
+/* Index number */
+.custom-app-page .service-index {
+  font-size: 14px;
+  font-weight: 600;
+  color: #22c55e;
+  min-width: 36px;
+  text-align: center;
+}
+
+/* Content block */
+.custom-app-page .service-content {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.05),
+      rgba(255, 255, 255, 0.015)
+    );
+  padding: 32px 36px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Typography */
+.custom-app-page .service-content h3 {
+  margin-bottom: 10px;
+  color: #eafff7;
+}
+
+.custom-app-page .service-content p {
+  color: #9fd3c4;
+  line-height: 1.7;
+}
+
+/* Subtle hover */
+.custom-app-page .service-item:hover .service-content {
+  border-color: rgba(34, 197, 94, 0.4);
+  transform: translateX(4px);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+
+/* =====================
+   AUDIENCE SECTION
+===================== */
+.custom-app-page .audience-section {
+  padding: 120px 0;
+  position: relative;
+}
+
+.custom-app-page .audience-section h2 {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+/* List container */
+.custom-app-page .audience-list {
+  max-width: 760px;
+  margin: auto;
+  list-style: none;
+  padding: 0;
+  position: relative;
+}
+
+/* Individual audience item */
+.custom-app-page .audience-list li {
+  position: relative;
+  padding: 30px 36px 30px 62px;
+  margin-bottom: 24px;
+
+  /* Better glass contrast */
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.10),
+      rgba(255, 255, 255, 0.04)
+    );
+
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+
+  /* Sharper separation */
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.25);
+
+  /* Text clarity */
+  font-size: 16px;
+  line-height: 1.75;
+  color: #f0fdf9;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+/* Accent marker (not an icon) */
+.custom-app-page .audience-list li::before {
+  content: "";
+  position: absolute;
+  left: 26px;
+  top: 34px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+
+  background: #22c55e;
+
+  box-shadow:
+    0 0 0 3px rgba(34, 197, 94, 0.35),
+    0 0 14px rgba(34, 197, 94, 0.85);
+}
+
+.custom-app-page .audience-list li::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .custom-app-page .audience-list li:hover {
+    border-color: rgba(34, 197, 94, 0.45);
+    transform: translateY(-1px);
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+}
+
+/* =====================
+   AUDIENCE SCROLL ANIMATION
+===================== */
+.custom-app-page .audience-list li {
+  opacity: 0;
+  transform: translateY(18px);
+
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.custom-app-page .audience-list li.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+
+/* =====================
+   PRINCIPLES SECTION
+===================== */
+.custom-app-page .principles-section {
+  padding: 140px 0;
+}
+
+/* Header */
+.custom-app-page .principles-header {
+  max-width: 720px;
+  margin-bottom: 100px;
+}
+
+.custom-app-page .principles-header h2 {
+  margin-bottom: 16px;
+}
+
+.custom-app-page .principles-header p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #9fd3c4;
+}
+
+/* List container */
+.custom-app-page .principles-list {
+  max-width: 860px;
+  margin-left: auto;
+}
+
+/* Individual principle */
+.custom-app-page .principle {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 40px;
+  padding: 44px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* First item top border */
+.custom-app-page .principle:first-child {
+  border-top: 0;
+}
+
+/* Large number */
+.custom-app-page .principle-number {
+  font-size: 36px;
+  font-weight: 600;
+  color: rgba(34, 197, 94, 0.35);
+  line-height: 1;
+}
+
+/* Content */
+.custom-app-page .principle-content h3 {
+  margin-bottom: 10px;
+  color: #eafff7;
+}
+
+.custom-app-page .principle-content p {
+  color: #9fd3c4;
+  line-height: 1.75;
+  max-width: 640px;
+}
+
+/* =====================
+   PRINCIPLES SCROLL ANIMATION
+===================== */
+.custom-app-page .principle {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.custom-app-page .principle.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+
+/* Mobile */
+@media (max-width: 768px) {
+  .custom-app-page .services-stack::before {
+    left: 10px;
+  }
+
+  .custom-app-page .service-item {
+    gap: 20px;
+  }
+
+  .custom-app-page .service-content {
+    padding: 26px 24px;
+  }
 }
 

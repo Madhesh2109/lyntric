@@ -40,6 +40,23 @@
 }
 
 /* -----------------
+   PROBLEMS
+------------------ */
+@media (max-width: 768px) {
+  .problems-list::before {
+    left: 10px;
+  }
+
+  .problem-item {
+    gap: 20px;
+  }
+
+  .problem-content {
+    padding: 26px 24px;
+  }
+}
+
+/* -----------------
    INDUSTRIES
 ------------------ */
 @media (max-width: 900px) {
@@ -64,6 +81,24 @@
 @media (max-width: 768px) {
   .process-intro {
     margin-top: 16px;
+  }
+}
+
+/* -----------------
+   ABOUT
+------------------ */
+@media (max-width: 900px) {
+  .about-manifesto .about-layout {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .about-manifesto .about-anchor {
+    position: static;
+  }
+
+  .about-manifesto .about-anchor h2 {
+    font-size: 40px;
   }
 }
 

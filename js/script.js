@@ -25,6 +25,34 @@ document.addEventListener("DOMContentLoaded", () =>
   }
 
   /* =====================
+    PROBLEMS SCROLL REVEAL + HIDE
+  ===================== */
+  const problemItems = document.querySelectorAll(".problem-item");
+
+  if (problemItems.length)
+  {
+    const problemObserver = new IntersectionObserver(
+      (entries) => 
+      {
+        entries.forEach((entry) =>
+        {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("reveal");
+          } else {
+            entry.target.classList.remove("reveal");
+          }
+        });
+      },
+      {
+        threshold: 0.4,
+        rootMargin: "0px 0px -100px 0px"
+      }
+    );
+
+    problemItems.forEach((item) => problemObserver.observe(item));
+  }
+
+  /* =====================
      CONTACT FORM
   ===================== */
   const contactForm = document.getElementById("contactForm");
@@ -115,3 +143,80 @@ document
       console.log("Custom Apps page clicked");
     });
   });
+
+/* =====================
+   SERVICES SCROLL REVEAL + HIDE
+===================== */
+const serviceItems = document.querySelectorAll(".service-item");
+
+if (serviceItems.length) {
+  const serviceObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("reveal");
+        } else {
+          entry.target.classList.remove("reveal");
+        }
+      });
+    },
+    {
+      threshold: 0.35,
+      rootMargin: "0px 0px -100px 0px"
+    }
+  );
+
+  serviceItems.forEach((item) => serviceObserver.observe(item));
+}
+
+/* =====================
+   AUDIENCE SECTION SCROLL REVEAL + HIDE
+===================== */
+const audienceItems = document.querySelectorAll(".audience-list li");
+
+if (audienceItems.length) {
+  const audienceObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("reveal");
+        } else {
+          entry.target.classList.remove("reveal");
+        }
+      });
+    },
+    {
+      threshold: 0.4,
+      rootMargin: "0px 0px -80px 0px"
+    }
+  );
+
+  audienceItems.forEach((item) => audienceObserver.observe(item));
+}
+
+/* =====================
+   PRINCIPLES SCROLL REVEAL + HIDE
+===================== */
+const principles = document.querySelectorAll(".principle");
+
+if (principles.length) {
+  const principleObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("reveal");
+        } else {
+          entry.target.classList.remove("reveal");
+        }
+      });
+    },
+    {
+      threshold: 0.4,
+      rootMargin: "0px 0px -100px 0px"
+    }
+  );
+
+  principles.forEach((item) => principleObserver.observe(item));
+}
+
+
