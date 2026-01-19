@@ -1,0 +1,76 @@
+/* =====================
+   CUSTOM APP HERO BG
+===================== */
+.custom-app-page .hero {
+  background-image: linear-gradient(
+      rgba(7, 28, 22, 0.85),
+      rgba(7, 28, 22, 0.95)
+    ),
+    url("../assets/images/web-and-mobile-apps.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+/* =====================
+   POSITIONING NOTE – FLOATING SURFACE
+===================== */
+.custom-app-page .positioning-note {
+  padding: 100px 0;
+}
+
+.custom-app-page .note-surface {
+  max-width: 860px;
+  margin: auto;
+
+  padding: 48px 54px;
+  border-radius: 22px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0.02)
+    );
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.45);
+
+  position: relative;
+}
+
+.custom-app-page .note-surface::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  pointer-events: none;
+}
+
+.custom-app-page .note-surface p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #eafff7;
+}
+
+/* =====================
+   TYPEWRITER EFFECT
+===================== */
+
+.custom-app-page .typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  margin-left: 4px;
+  background-color: #22c55e;
+  animation: blink 1s steps(2, start) infinite;
+  vertical-align: bottom;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
