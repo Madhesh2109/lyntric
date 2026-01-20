@@ -53,6 +53,30 @@ document.addEventListener("DOMContentLoaded", () =>
   }
 
   /* =====================
+    HOW WE WORK – FLOW ANIMATION
+  ===================== */
+  const canvasBlocks = document.querySelectorAll(".canvas-block");
+
+  if (canvasBlocks.length) {
+    const canvasObserver = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("reveal");
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.3,
+        rootMargin: "0px 0px -120px 0px"
+      }
+    );
+
+    canvasBlocks.forEach((block) => canvasObserver.observe(block));
+  }
+
+  /* =====================
      CONTACT FORM
   ===================== */
   const contactForm = document.getElementById("contactForm");
