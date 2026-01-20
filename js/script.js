@@ -79,13 +79,33 @@ document.addEventListener("DOMContentLoaded", () =>
   /* =====================
      CONTACT FORM
   ===================== */
-  const contactForm = document.getElementById("contactForm");
+  const emailBtn = document.getElementById("emailUsBtn");
 
-  if (contactForm) {
-    contactForm.addEventListener("submit", function (e) {
+  if (emailBtn) {
+    emailBtn.addEventListener("click", function (e) {
       e.preventDefault();
-      alert("Thank you! We will contact you shortly.");
-      this.reset();
+
+      const email = "your@email.com";
+      const subject = encodeURIComponent("Inquiry from Lyntric Website");
+      const body = encodeURIComponent(
+        "Hi,\n\nI’d like to discuss my operations and explore how we can work together.\n\nThanks,"
+      );
+
+      const gmailURL =
+        `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`;
+
+      const mailtoURL =
+        `mailto:${email}?subject=${subject}&body=${body}`;
+
+      // Try Gmail first
+      const gmailWindow = window.open(gmailURL, "_blank");
+
+      // Fallback to mailto if popup blocked or Gmail not available
+      setTimeout(() => {
+        if (!gmailWindow || gmailWindow.closed || typeof gmailWindow.closed === "undefined") {
+          window.location.href = mailtoURL;
+        }
+      }, 600);
     });
   }
 
@@ -156,17 +176,6 @@ if (hamburger && mobileMenu && mobileBackdrop) {
     link.addEventListener("click", closeMenu);
   });
 }
-
-/* =================================================
-   OPTIONAL: DEBUG / PAGE TRACKING
-================================================= */
-document
-  .querySelectorAll('a[href="custom-app-development.html"]')
-  .forEach((link) => {
-    link.addEventListener("click", () => {
-      console.log("Custom Apps page clicked");
-    });
-  });
 
 /* =====================
    SERVICES SCROLL REVEAL + HIDE
