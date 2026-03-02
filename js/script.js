@@ -1,160 +1,255 @@
-// ================= SMOOTH SCROLL =================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute("href"))
-            .scrollIntoView({ behavior: "smooth" });
-    });
-});
+/* =================================================
+   GLOBAL DOM READY
+================================================= */
+document.addEventListener("DOMContentLoaded", () =>
+{
+  /* =====================
+     PROCESS CARD ANIMATION
+  ===================== */
+  const cards = document.querySelectorAll(".process .card");
 
-// Navbar shrink on scroll
-window.addEventListener("scroll", function () {
-    const navbar = document.querySelector(".navbar");
-    navbar.classList.toggle("scrolled", window.scrollY > 50);
-});
-
-// ================= HERO COUNTER ANIMATION =================
-
-const heroCounters = document.querySelectorAll(".counter");
-
-const startCounter = (counter) => {
-    const target = +counter.getAttribute("data-target");
-    let count = 0;
-
-    const updateCounter = () => {
-        const increment = target / 100;
-
-        if (count < target) {
-            count += increment;
-            counter.innerText = Math.ceil(count);
-            requestAnimationFrame(updateCounter);
-        } else {
-            counter.innerText = target;
-        }
-    };
-
-    updateCounter();
-};
-
-// Trigger animation when hero loads
-window.addEventListener("load", () => {
-    counters.forEach(counter => {
-        startCounter(counter);
-    });
-});
-
-
-// Animated Counter
-const counters = document.querySelectorAll('.counter');
-const speed = 200; // lower = faster
-
-const startCounters = () => {
-    counters.forEach(counter => {
-        const updateCount = () => {
-            const target = +counter.getAttribute('data-target');
-            const count = +counter.innerText;
-
-            const increment = target / speed;
-
-            if (count < target) {
-                counter.innerText = Math.ceil(count + increment);
-                setTimeout(updateCount, 10);
-            } else {
-                counter.innerText = target;
-            }
-        };
-
-        updateCount();
-    });
-};
-
-// Trigger animation when section appears
-const marketSection = document.querySelector('.market-intel');
-
-const counterObserver = new IntersectionObserver(entries => {
-    if (entries[0].isIntersecting) {
-        startCounters();
-        counterObserver.disconnect();
-    }
-}, { threshold: 0.5 });
-
-counterObserver.observe(marketSection);
-
-// Fade-in animation for timeline
-const items = document.querySelectorAll(".timeline-item");
-
-const timelineObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("show");
-        } else {
-            entry.target.classList.remove("show");
-        }
-    });
-}, {
-    threshold: 0.3
-});
-
-items.forEach(item => {
-    timelineObserver.observe(item);
-});
-
-// ================= CONTACT FORM =================
-document.querySelector("form").addEventListener("submit", function(e) {
-    e.preventDefault();
-    alert("Thank you! We will get back to you shortly.");
-});
-
-// ================= YAHOO FINANCE LIVE TICKER =================
-/*
-
-const symbols = [
-    { symbol: "HDFCBANK.NS", name: "HDFC Bank" },
-    { symbol: "ICICIBANK.NS", name: "ICICI Bank" },
-    { symbol: "SBIN.NS", name: "SBI" },
-    { symbol: "PAYTM.NS", name: "Paytm" }
-];
-
-const tickerTrack = document.getElementById("tickerTrack");
-
-async function fetchStockData() {
-    tickerTrack.innerHTML = "Loading market data...";
-    let tickerHTML = "";
-
-    try {
-        const response = await fetch("http://localhost:3000/api/stocks");
-        const data = await response.json();
-
-        const results = data.quoteResponse.result;
-
-        results.forEach(stock => {
-            const price = stock.regularMarketPrice.toFixed(2);
-            const changePercent = stock.regularMarketChangePercent.toFixed(2);
-
-            const direction = changePercent >= 0 ? "▲" : "▼";
-            const color = changePercent >= 0 ? "#00ff88" : "#ff4d4d";
-
-            tickerHTML += `
-                <span style="margin:0 40px; color:white;">
-                    ${stock.shortName} ₹${price}
-                    <span style="color:${color};">
-                        ${direction} ${changePercent}%
-                    </span>
-                </span>
-            `;
+  if (cards.length) {
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            obs.unobserve(entry.target);
+          }
         });
+      },
+      { threshold: 0.25 }
+    );
 
-        tickerTrack.innerHTML = tickerHTML;
+    cards.forEach((card) => observer.observe(card));
+  }
 
-    } catch (error) {
-        tickerTrack.innerHTML = "Market data unavailable.";
+  /* =====================
+    PROBLEMS SCROLL REVEAL + HIDE
+  ===================== */
+  const problemItems = document.querySelectorAll(".problem-item");
+
+  if (problemItems.length)
+  {
+    const problemObserver = new IntersectionObserver(
+      (entries) => 
+      {
+        entries.forEach((entry) =>
+        {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("reveal");
+          } else {
+            entry.target.classList.remove("reveal");
+          }
+        });
+      },
+      {
+        threshold: 0.4,
+        rootMargin: "0px 0px -100px 0px"
+      }
+    );
+
+    problemItems.forEach((item) => problemObserver.observe(item));
+  }
+
+  /* =====================
+    HOW WE WORK – FLOW ANIMATION
+  ===================== */
+  const canvasBlocks = document.querySelectorAll(".canvas-block");
+
+  if (canvasBlocks.length) {
+    const canvasObserver = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("reveal");
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.3,
+        rootMargin: "0px 0px -120px 0px"
+      }
+    );
+
+    canvasBlocks.forEach((block) => canvasObserver.observe(block));
+  }
+
+  /* =====================
+     CONTACT FORM
+  ===================== */
+  const emailBtn = document.getElementById("emailUsBtn");
+
+  if (emailBtn) {
+    emailBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      const email = "your@email.com";
+      const subject = encodeURIComponent("Inquiry from Lyntric Website");
+      const body = encodeURIComponent(
+        "Hi,\n\nI’d like to discuss my operations and explore how we can work together.\n\nThanks,"
+      );
+
+      const gmailURL =
+        `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`;
+
+      const mailtoURL =
+        `mailto:${email}?subject=${subject}&body=${body}`;
+
+      // Try Gmail first
+      const gmailWindow = window.open(gmailURL, "_blank");
+
+      // Fallback to mailto if popup blocked or Gmail not available
+      setTimeout(() => {
+        if (!gmailWindow || gmailWindow.closed || typeof gmailWindow.closed === "undefined") {
+          window.location.href = mailtoURL;
+        }
+      }, 600);
+    });
+  }
+
+  /* =====================
+     LOOPING TYPING EFFECT
+  ===================== */
+  const textEl = document.getElementById("typedText");
+  const cursor = document.querySelector(".typing-cursor");
+
+  if (textEl) {
+    const fullText = textEl.textContent.trim();
+    let index = 0;
+    let isDeleting = false;
+
+    textEl.textContent = "";
+
+    function typeLoop() {
+      if (!isDeleting) {
+        // Typing forward
+        textEl.textContent = fullText.substring(0, index + 1);
+        index++;
+
+        if (index === fullText.length) {
+          setTimeout(() => (isDeleting = true), 1600);
+        }
+      } else {
+        // Deleting backward
+        textEl.textContent = fullText.substring(0, index - 1);
+        index--;
+
+        if (index === 0) {
+          isDeleting = false;
+        }
+      }
+
+      const speed = isDeleting ? 14 : 26;
+      setTimeout(typeLoop, speed);
     }
+
+    setTimeout(typeLoop, 500);
+  }
+});
+
+/* =================================================
+   HAMBURGER MENU (SAFE ON ALL PAGES)
+================================================= */
+const hamburger = document.querySelector(".hamburger");
+const mobileMenu = document.getElementById("mobileMenu");
+const mobileBackdrop = document.getElementById("mobileBackdrop");
+
+function openMenu() {
+  mobileMenu.classList.add("active");
+  mobileBackdrop.classList.add("active");
+  document.body.style.overflow = "hidden";
 }
 
-// Fetch on load
-fetchStockData();
+function closeMenu() {
+  mobileMenu.classList.remove("active");
+  mobileBackdrop.classList.remove("active");
+  document.body.style.overflow = "";
+}
 
-// Refresh every 60 seconds
-setInterval(fetchStockData, 60000);
+if (hamburger && mobileMenu && mobileBackdrop) {
+  hamburger.addEventListener("click", openMenu);
+  mobileBackdrop.addEventListener("click", closeMenu);
 
-*/
+  mobileMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+}
+
+/* =====================
+   SERVICES SCROLL REVEAL + HIDE
+===================== */
+const serviceItems = document.querySelectorAll(".service-item");
+
+if (serviceItems.length) {
+  const serviceObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("reveal");
+        } else {
+          entry.target.classList.remove("reveal");
+        }
+      });
+    },
+    {
+      threshold: 0.35,
+      rootMargin: "0px 0px -100px 0px"
+    }
+  );
+
+  serviceItems.forEach((item) => serviceObserver.observe(item));
+}
+
+/* =====================
+   AUDIENCE SECTION SCROLL REVEAL + HIDE
+===================== */
+const audienceItems = document.querySelectorAll(".audience-list li");
+
+if (audienceItems.length) {
+  const audienceObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("reveal");
+        } else {
+          entry.target.classList.remove("reveal");
+        }
+      });
+    },
+    {
+      threshold: 0.4,
+      rootMargin: "0px 0px -80px 0px"
+    }
+  );
+
+  audienceItems.forEach((item) => audienceObserver.observe(item));
+}
+
+/* =====================
+   PRINCIPLES SCROLL REVEAL + HIDE
+===================== */
+const principles = document.querySelectorAll(".principle");
+
+if (principles.length) {
+  const principleObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("reveal");
+        } else {
+          entry.target.classList.remove("reveal");
+        }
+      });
+    },
+    {
+      threshold: 0.4,
+      rootMargin: "0px 0px -100px 0px"
+    }
+  );
+
+  principles.forEach((item) => principleObserver.observe(item));
+}
+
+
